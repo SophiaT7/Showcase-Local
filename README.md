@@ -1,66 +1,123 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ShowcaseLocal
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> A platform for local micro-entrepreneurs to create a digital storefront and promote their services to nearby customers.
 
-## About Laravel
+![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
+![Laravel](https://img.shields.io/badge/Laravel-11-red?style=flat-square&logo=laravel)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-blue?style=flat-square&logo=tailwindcss)
+![MySQL](https://img.shields.io/badge/MySQL-8-orange?style=flat-square&logo=mysql)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## About
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+ShowcaseLocal connects micro-entrepreneurs with their local community. Business owners can create a personalized digital storefront — with photos, services, pricing, and opening hours — while customers can easily discover and contact nearby businesses.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Features
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- 🏪 Business listing with profile photo and banner
+- 🔍 Search by service name and city
+- 🗂️ Filter by category
+- 📋 Service catalog with prices and descriptions
+- 🕐 Opening hours per day of the week
+- 🖼️ Photo gallery
+- ⭐ Customer reviews and ratings
+- 💬 Direct WhatsApp contact button
+- 🛠️ Admin panel for managing businesses, categories and users
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## Tech Stack
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Frontend
+| Technology | Version | Purpose |
+|---|---|---|
+| [Next.js](https://nextjs.org/) | 16.1.6 | React framework with SSR |
+| [React](https://react.dev/) | 19 | UI library |
+| [Tailwind CSS](https://tailwindcss.com/) | 4 | Utility-first styling |
+| [shadcn/ui](https://ui.shadcn.com/) | 3 | UI components |
+| [Lucide React](https://lucide.dev/) | 0.575 | Icons |
+| [Axios](https://axios-http.com/) | 1.13 | HTTP client |
+| [TanStack Query](https://tanstack.com/query) | 5 | Data fetching & caching |
+| [Zustand](https://zustand-demo.pmnd.rs/) | 5 | State management |
+| [React Hook Form](https://react-hook-form.com/) | 7 | Form handling |
+| [Zod](https://zod.dev/) | 4 | Schema validation |
 
-### Premium Partners
+### Backend
+| Technology | Version | Purpose |
+|---|---|---|
+| [Laravel](https://laravel.com/) | 11 | PHP framework / REST API |
+| [Filament](https://filamentphp.com/) | 3 | Admin panel |
+| [MySQL](https://www.mysql.com/) | 8 | Database |
+| [Vite](https://vitejs.dev/) | 6 | Asset bundler |
+| [Tailwind CSS](https://tailwindcss.com/) | 3 | Admin styling |
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+---
 
-## Contributing
+## Project Structure
+```
+showcase-local/
+├── showcase-local-api/
+│   ├── app/
+│   │   ├── Models/
+│   │   ├── Http/Controllers/Api/
+│   │   └── Filament/
+│   └── routes/
+│       └── api.php
+│
+└── showcase-local-web/
+    └── src/
+        └── app/
+            ├── page.tsx
+            ├── categorias/
+            └── vitrine/[slug]/
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## Getting Started
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Backend (Laravel)
+```bash
+git clone https://github.com/your-username/showcase-local-api
+cd showcase-local-api
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan storage:link
+```
 
-## Security Vulnerabilities
+### Frontend (Next.js)
+```bash
+git clone https://github.com/your-username/showcase-local-web
+cd showcase-local-web
+npm install
+cp .env.example .env.local
+npm run dev
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
+
+## Environment Variables
+
+### Frontend `.env.local`
+```env
+NEXT_PUBLIC_API_URL=http://vitrine-backend.test/api
+```
+
+### Backend `.env`
+```env
+APP_URL=http://vitrine-backend.test
+DB_DATABASE=vitrine_negocio
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+---
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+MIT
