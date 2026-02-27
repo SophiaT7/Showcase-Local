@@ -2,9 +2,9 @@
 
 > A platform for local micro-entrepreneurs to create a digital storefront and promote their services to nearby customers.
 
-![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)
+![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
 ![Laravel](https://img.shields.io/badge/Laravel-11-red?style=flat-square&logo=laravel)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-blue?style=flat-square&logo=tailwindcss)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-blue?style=flat-square&logo=tailwindcss)
 ![MySQL](https://img.shields.io/badge/MySQL-8-orange?style=flat-square&logo=mysql)
 
 ---
@@ -34,11 +34,16 @@ ShowcaseLocal connects micro-entrepreneurs with their local community. Business 
 ### Frontend
 | Technology | Version | Purpose |
 |---|---|---|
-| [Next.js](https://nextjs.org/) | 15 | React framework with SSR |
-| [Tailwind CSS](https://tailwindcss.com/) | 3 | Utility-first styling |
-| [shadcn/ui](https://ui.shadcn.com/) | - | UI components |
-| [Lucide React](https://lucide.dev/) | - | Icons |
-| [Axios](https://axios-http.com/) | - | HTTP client |
+| [Next.js](https://nextjs.org/) | 16.1.6 | React framework with SSR |
+| [React](https://react.dev/) | 19 | UI library |
+| [Tailwind CSS](https://tailwindcss.com/) | 4 | Utility-first styling |
+| [shadcn/ui](https://ui.shadcn.com/) | 3 | UI components |
+| [Lucide React](https://lucide.dev/) | 0.575 | Icons |
+| [Axios](https://axios-http.com/) | 1.13 | HTTP client |
+| [TanStack Query](https://tanstack.com/query) | 5 | Data fetching & caching |
+| [Zustand](https://zustand-demo.pmnd.rs/) | 5 | State management |
+| [React Hook Form](https://react-hook-form.com/) | 7 | Form handling |
+| [Zod](https://zod.dev/) | 4 | Schema validation |
 
 ### Backend
 | Technology | Version | Purpose |
@@ -46,7 +51,8 @@ ShowcaseLocal connects micro-entrepreneurs with their local community. Business 
 | [Laravel](https://laravel.com/) | 11 | PHP framework / REST API |
 | [Filament](https://filamentphp.com/) | 3 | Admin panel |
 | [MySQL](https://www.mysql.com/) | 8 | Database |
-| [Laravel Sanctum](https://laravel.com/docs/sanctum) | - | API authentication |
+| [Vite](https://vitejs.dev/) | 6 | Asset bundler |
+| [Tailwind CSS](https://tailwindcss.com/) | 3 | Admin styling |
 
 ---
 
