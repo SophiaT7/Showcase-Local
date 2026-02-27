@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use App\Models\Categoria;
+use Illuminate\Http\Request;
+
+class CategoriaController extends Controller
+{
+     public function index()
+    {
+        return response()->json(
+            Categoria::where('ativo', true)
+                ->withCount('vitrines')
+                ->orderBy('nome')
+                ->get()
+        );
+    }
+}
