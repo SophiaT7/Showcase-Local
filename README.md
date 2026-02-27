@@ -31,7 +31,7 @@ ShowcaseLocal connects micro-entrepreneurs with their local community. Business 
 
 ## Tech Stack
 
-### Frontend
+### Frontend (`/frontend`)
 | Technology | Version | Purpose |
 |---|---|---|
 | [Next.js](https://nextjs.org/) | 16.1.6 | React framework with SSR |
@@ -45,7 +45,7 @@ ShowcaseLocal connects micro-entrepreneurs with their local community. Business 
 | [React Hook Form](https://react-hook-form.com/) | 7 | Form handling |
 | [Zod](https://zod.dev/) | 4 | Schema validation |
 
-### Backend
+### Backend (`/`)
 | Technology | Version | Purpose |
 |---|---|---|
 | [Laravel](https://laravel.com/) | 11 | PHP framework / REST API |
@@ -58,31 +58,34 @@ ShowcaseLocal connects micro-entrepreneurs with their local community. Business 
 
 ## Project Structure
 ```
-showcase-local/
-├── showcase-local-api/
-│   ├── app/
-│   │   ├── Models/
-│   │   ├── Http/Controllers/Api/
-│   │   └── Filament/
-│   └── routes/
-│       └── api.php
+Showcase-Local/
+├── frontend/                   # Next.js frontend
+│   └── src/
+│       └── app/
+│           ├── page.tsx            # Home / search
+│           ├── categorias/         # Categories listing
+│           └── vitrine/[slug]/     # Business storefront page
 │
-└── showcase-local-web/
-    └── src/
-        └── app/
-            ├── page.tsx
-            ├── categorias/
-            └── vitrine/[slug]/
+├── app/                        # Laravel — Models, Controllers, Filament
+│   ├── Models/
+│   ├── Http/Controllers/Api/
+│   └── Filament/
+├── routes/
+│   └── api.php                 # API routes
+├── database/
+│   └── migrations/             # Database migrations
+└── ...                         # Laravel backend (root)
 ```
 
 ---
 
 ## Getting Started
 
-### Backend (Laravel)
+### Backend (Laravel — root)
 ```bash
-git clone https://github.com/your-username/showcase-local-api
-cd showcase-local-api
+git clone https://github.com/SophiaT7/Showcase-Local.git
+cd Showcase-Local
+
 composer install
 cp .env.example .env
 php artisan key:generate
@@ -90,12 +93,13 @@ php artisan migrate
 php artisan storage:link
 ```
 
-### Frontend (Next.js)
+### Frontend (Next.js — /frontend)
 ```bash
-git clone https://github.com/your-username/showcase-local-web
-cd showcase-local-web
+cd frontend
+
 npm install
 cp .env.example .env.local
+# Set NEXT_PUBLIC_API_URL in .env.local
 npm run dev
 ```
 
@@ -103,14 +107,14 @@ npm run dev
 
 ## Environment Variables
 
-### Frontend `.env.local`
+### Frontend `frontend/.env.local`
 ```env
-NEXT_PUBLIC_API_URL=http://vitrine-backend.test/api
+NEXT_PUBLIC_API_URL=http://your-backend-url/api
 ```
 
 ### Backend `.env`
 ```env
-APP_URL=http://vitrine-backend.test
+APP_URL=http://your-backend-url
 DB_DATABASE=vitrine_negocio
 DB_USERNAME=root
 DB_PASSWORD=
