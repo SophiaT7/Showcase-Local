@@ -50,13 +50,21 @@ class User extends Authenticatable implements FilamentUser
         ];
     }
 
-        public function canAccessPanel(Panel $panel): bool
+    public function canAccessPanel(Panel $panel): bool
     {
-        return match($panel->getId()) {
+        $allowed = match($panel->getId()) {
             'admin'  => $this->role === 'admin',
             'painel' => $this->role === 'empreendedor',
             default  => false,
         };
+
+        if (! $allowed) {
+            auth()->logout();
+            session()->invalidate();
+            session()->regenerateToken();
+        }
+
+        return $allowed;
     }
 
     public function vitrine()
