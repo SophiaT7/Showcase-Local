@@ -18,6 +18,7 @@ export default function ListaVitrines() {
       params: {
         q: searchParams.get('q'),
         cidade: searchParams.get('cidade'),
+        categoria: searchParams.get('categoria'),
       }
     })
     .then(res => setVitrines(res.data.data ?? res.data))

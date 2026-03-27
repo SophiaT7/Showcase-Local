@@ -17,13 +17,33 @@ class ServicoResource extends Resource
 {
     protected static ?string $model = Servico::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
+
+    protected static ?string $navigationLabel = 'Servicos';
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->whereHas('vitrine', fn (Builder $q) => $q->where('user_id', auth()->id()));
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('nome')->required()->maxLength(255),
+                Forms\Components\Textarea::make('descricao')->rows(2),
+                Forms\Components\TextInput::make('preco')
+                    ->numeric()
+                    ->prefix('R$'),
+                Forms\Components\TextInput::make('preco_label')
+                    ->label('Label do preco')
+                    ->placeholder('Ex: a partir de')
+                    ->maxLength(50),
+                Forms\Components\Toggle::make('ativo')->default(true),
+                Forms\Components\TextInput::make('ordem')
+                    ->numeric()
+                    ->default(0),
             ]);
     }
 
@@ -31,20 +51,17 @@ class ServicoResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('nome')->searchable(),
+                Tables\Columns\TextColumn::make('preco')
+                    ->money('BRL'),
+                Tables\Columns\IconColumn::make('ativo')->boolean(),
+                Tables\Columns\TextColumn::make('ordem')->sortable(),
             ])
-            ->filters([
-                //
-            ])
+            ->defaultSort('ordem')
+            ->filters([])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -55,9 +72,7 @@ class ServicoResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array

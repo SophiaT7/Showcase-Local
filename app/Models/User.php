@@ -13,7 +13,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -24,6 +24,7 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**

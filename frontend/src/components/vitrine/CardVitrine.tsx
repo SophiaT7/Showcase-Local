@@ -16,8 +16,8 @@ export default function CardVitrine({ vitrine }: Props) {
           className="h-24 w-full"
           style={{ backgroundColor: vitrine.cor_primaria }}
         >
-          {vitrine.banner && (
-            <img src={vitrine.banner} alt="" className="w-full h-full object-cover" />
+          {vitrine.banner_url && (
+            <img src={vitrine.banner_url} alt="" className="w-full h-full object-cover" />
           )}
         </div>
 
@@ -25,8 +25,8 @@ export default function CardVitrine({ vitrine }: Props) {
           {/* Avatar + Nome */}
           <div className="flex items-center gap-3 -mt-8 mb-3">
             <div className="w-14 h-14 rounded-full border-2 border-white bg-gray-200 overflow-hidden">
-              {vitrine.foto_perfil ? (
-                <img src={vitrine.foto_perfil} alt={vitrine.nome} className="w-full h-full object-cover" />
+              {vitrine.foto_perfil_url ? (
+                <img src={vitrine.foto_perfil_url} alt={vitrine.nome} className="w-full h-full object-cover" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-xl font-bold text-gray-400">
                   {vitrine.nome[0]}

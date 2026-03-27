@@ -1,18 +1,19 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import api from '@/lib/api'
 import { Categoria } from '@/types'
 import Link from 'next/link'
+import LucideIcon from '@/components/ui/LucideIcon'
 
-async function getCategorias(): Promise<Categoria[]> {
-  try {
-    const { data } = await api.get('/categorias')
-    return data
-  } catch {
-    return []
-  }
-}
+export default function CategoriasPage() {
+  const [categorias, setCategorias] = useState<Categoria[]>([])
 
-export default async function CategoriasPage() {
-  const categorias = await getCategorias()
+  useEffect(() => {
+    api.get('/categorias')
+      .then(res => setCategorias(res.data))
+      .catch(() => setCategorias([]))
+  }, [])
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
@@ -24,9 +25,11 @@ export default async function CategoriasPage() {
           <Link
             key={cat.id}
             href={`/?categoria=${cat.slug}`}
-            className="bg-white border rounded-xl p-5 text-center hover:shadow-md hover:border-indigo-300 transition-all"
+            className="bg-white border rounded-xl p-5 text-center hover:shadow-md hover:border-indigo-300 transition-all flex flex-col items-center gap-2"
           >
-            {cat.icone && <div className="text-3xl mb-2">{cat.icone}</div>}
+            {cat.icone && (
+              <LucideIcon name={cat.icone} size={32} className="text-indigo-600" />
+            )}
             <p className="font-semibold text-gray-800">{cat.nome}</p>
           </Link>
         ))}

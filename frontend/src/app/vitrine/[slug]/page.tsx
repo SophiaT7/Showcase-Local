@@ -139,7 +139,7 @@ export default async function VitrinePage({ params }: { params: Promise<{ slug: 
             {vitrine.galeria.map(foto => (
               <div key={foto.id} className="aspect-square rounded-xl overflow-hidden bg-gray-100">
                 <img
-                  src={foto.path}
+                  src={`${process.env.NEXT_PUBLIC_API_URL?.replace('/api', '')}/storage/${foto.path}`}
                   alt={foto.legenda ?? ''}
                   className="w-full h-full object-cover hover:scale-105 transition-transform"
                 />

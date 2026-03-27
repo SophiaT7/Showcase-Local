@@ -17,6 +17,7 @@ class VitrineController extends Controller
             $query->where(function($q) use ($request) {
                 $q->where('nome', 'like', "%{$request->q}%")
                   ->orWhere('descricao', 'like', "%{$request->q}%")
+                  ->orWhereRaw('LOWER(tags) LIKE ?', ['%' . strtolower($request->q) . '%'])
                   ->orWhereHas('categoria', fn($q) => $q->where('nome', 'like', "%{$request->q}%"))
                   ->orWhereHas('servicos', fn($q) => $q->where('nome', 'like', "%{$request->q}%"));
             });

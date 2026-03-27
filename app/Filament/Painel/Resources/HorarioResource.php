@@ -17,13 +17,34 @@ class HorarioResource extends Resource
 {
     protected static ?string $model = Horario::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clock';
+
+    protected static ?string $navigationLabel = 'Horarios';
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->whereHas('vitrine', fn (Builder $q) => $q->where('user_id', auth()->id()));
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('dia_semana')
+                    ->options([
+                        0 => 'Domingo',
+                        1 => 'Segunda-feira',
+                        2 => 'Terca-feira',
+                        3 => 'Quarta-feira',
+                        4 => 'Quinta-feira',
+                        5 => 'Sexta-feira',
+                        6 => 'Sabado',
+                    ])
+                    ->required(),
+                Forms\Components\TimePicker::make('abertura'),
+                Forms\Components\TimePicker::make('fechamento'),
+                Forms\Components\Toggle::make('fechado')->default(false),
             ]);
     }
 
@@ -31,33 +52,28 @@ class HorarioResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('dia_semana')
+                    ->formatStateUsing(fn ($state) => ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'][$state] ?? $state)
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('abertura'),
+                Tables\Columns\TextColumn::make('fechamento'),
+                Tables\Columns\IconColumn::make('fechado')->boolean()
+                    ->trueIcon('heroicon-o-x-circle')
+                    ->falseIcon('heroicon-o-check-circle')
+                    ->trueColor('danger')
+                    ->falseColor('success'),
             ])
-            ->filters([
-                //
-            ])
+            ->defaultSort('dia_semana')
+            ->filters([])
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+            ->bulkActions([]);
     }
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array

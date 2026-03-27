@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Painel\Pages\PainelRegistration;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -25,8 +26,9 @@ class PainelPanelProvider extends PanelProvider
         return $panel
             ->id('painel')
             ->path('painel')
-            ->login()          
-            ->registration()
+            ->login()
+            ->registration(PainelRegistration::class)
+            ->brandName('ShowcaseLocal')
             ->colors([
                 'primary' => Color::Amber,
             ])

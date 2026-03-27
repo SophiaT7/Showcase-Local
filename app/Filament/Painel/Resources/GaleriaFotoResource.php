@@ -17,13 +17,29 @@ class GaleriaFotoResource extends Resource
 {
     protected static ?string $model = GaleriaFoto::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-photo';
+
+    protected static ?string $navigationLabel = 'Galeria de Fotos';
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->whereHas('vitrine', fn (Builder $q) => $q->where('user_id', auth()->id()));
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\FileUpload::make('path')
+                    ->label('Foto')
+                    ->image()
+                    ->directory('vitrines/galeria')
+                    ->required(),
+                Forms\Components\TextInput::make('legenda')->maxLength(255),
+                Forms\Components\TextInput::make('ordem')
+                    ->numeric()
+                    ->default(0),
             ]);
     }
 
@@ -31,20 +47,17 @@ class GaleriaFotoResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\ImageColumn::make('path')
+                    ->label('Foto')
+                    ->disk('public'),
+                Tables\Columns\TextColumn::make('legenda')->searchable(),
+                Tables\Columns\TextColumn::make('ordem')->sortable(),
             ])
-            ->filters([
-                //
-            ])
+            ->defaultSort('ordem')
+            ->filters([])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -55,9 +68,7 @@ class GaleriaFotoResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array

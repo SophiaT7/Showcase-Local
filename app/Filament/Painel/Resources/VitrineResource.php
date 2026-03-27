@@ -17,13 +17,39 @@ class VitrineResource extends Resource
 {
     protected static ?string $model = Vitrine::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-storefront';
+
+    protected static ?string $navigationLabel = 'Minha Vitrine';
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->where('user_id', auth()->id());
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('nome')->required()->maxLength(255),
+                Forms\Components\Textarea::make('descricao')->rows(3),
+                Forms\Components\TextInput::make('whatsapp')->maxLength(20),
+                Forms\Components\TextInput::make('cidade')->maxLength(100),
+                Forms\Components\TextInput::make('bairro')->maxLength(100),
+                Forms\Components\TextInput::make('estado')->maxLength(2),
+                Forms\Components\Select::make('categoria_id')
+                    ->relationship('categoria', 'nome')
+                    ->required(),
+                Forms\Components\TagsInput::make('tags')
+                    ->placeholder('Ex: cabelo, barba, corte masculino')
+                    ->helperText('Palavras-chave que ajudam clientes a encontrar seu negocio na busca.'),
+                Forms\Components\ColorPicker::make('cor_primaria'),
+                Forms\Components\FileUpload::make('foto_perfil')
+                    ->image()
+                    ->directory('vitrines/perfil'),
+                Forms\Components\FileUpload::make('banner')
+                    ->image()
+                    ->directory('vitrines/banner'),
             ]);
     }
 
@@ -31,33 +57,24 @@ class VitrineResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('nome')->searchable(),
+                Tables\Columns\TextColumn::make('cidade'),
+                Tables\Columns\TextColumn::make('categoria.nome')->label('Categoria'),
+                Tables\Columns\TextColumn::make('status')->badge(),
                 Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->dateTime('d/m/Y H:i')
+                    ->sortable(),
             ])
-            ->filters([
-                //
-            ])
+            ->filters([])
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+            ->bulkActions([]);
     }
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array

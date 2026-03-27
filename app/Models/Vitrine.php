@@ -10,10 +10,17 @@ class Vitrine extends Model
     protected $fillable = [
         'user_id', 'categoria_id', 'nome', 'slug', 'descricao',
         'foto_perfil', 'banner', 'whatsapp', 'cidade', 'bairro',
-        'estado', 'cor_primaria', 'status',
+        'estado', 'cor_primaria', 'tags', 'status',
     ];
 
     protected $appends = ['foto_perfil_url', 'banner_url'];
+
+    protected function casts(): array
+    {
+        return [
+            'tags' => 'array',
+        ];
+    }
 
     public function getFotoPerfilUrlAttribute()
     {
