@@ -21,3 +21,23 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+node_modules
+
+# Personal/system files
+.bash_history
+.bashrc
+.cache/
+.claude.json
+.claude/
+.config/
+.dotnet/
+.local/
+.npm-global/
+.npm/
+.npmrc
+.pm2/
+.tmp/
+.vscode-remote-containers/
+.vscode-server/
+.wget-hsts
+routes/web.php-ruim

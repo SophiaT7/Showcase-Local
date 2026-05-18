@@ -15,22 +15,37 @@ export default function CategoriasPage() {
       .catch(() => setCategorias([]))
   }, [])
 
+  // Sort by vitrines_count descending
+  const sorted = [...categorias].sort(
+    (a, b) => (b.vitrines_count ?? 0) - (a.vitrines_count ?? 0)
+  )
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
       <h1 className="text-3xl font-bold text-gray-900 mb-2">Categorias</h1>
       <p className="text-gray-500 mb-8">Explore serviços por categoria</p>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        {categorias.map(cat => (
+        {sorted.map(cat => (
           <Link
             key={cat.id}
             href={`/?categoria=${cat.slug}`}
-            className="bg-white border rounded-xl p-5 text-center hover:shadow-md hover:border-indigo-300 transition-all flex flex-col items-center gap-2"
+            className="group bg-white border rounded-xl p-5 text-center transition-all flex flex-col items-center gap-2
+              hover:shadow-lg hover:border-indigo-400 hover:bg-indigo-50 hover:scale-105"
           >
             {cat.icone && (
-              <LucideIcon name={cat.icone} size={32} className="text-indigo-600" />
+              <LucideIcon
+                name={cat.icone}
+                size={32}
+                className="text-indigo-600 group-hover:text-indigo-700 transition-colors"
+              />
             )}
-            <p className="font-semibold text-gray-800">{cat.nome}</p>
+            <p className="font-semibold text-gray-800 group-hover:text-indigo-700 transition-colors">
+              {cat.nome}
+            </p>
+            <span className="text-xs text-gray-400 group-hover:text-indigo-500 transition-colors">
+              {cat.vitrines_count ?? 0} {cat.vitrines_count === 1 ? 'resultado' : 'resultados'}
+            </span>
           </Link>
         ))}
       </div>

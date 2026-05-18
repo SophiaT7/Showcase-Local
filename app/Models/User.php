@@ -52,19 +52,11 @@ class User extends Authenticatable implements FilamentUser
 
     public function canAccessPanel(Panel $panel): bool
     {
-        $allowed = match($panel->getId()) {
+        return match($panel->getId()) {
             'admin'  => $this->role === 'admin',
-            'painel' => $this->role === 'empreendedor',
+            'painel' => in_array($this->role, ['empreendedor', 'admin']),
             default  => false,
         };
-
-        if (! $allowed) {
-            auth()->logout();
-            session()->invalidate();
-            session()->regenerateToken();
-        }
-
-        return $allowed;
     }
 
     public function vitrine()

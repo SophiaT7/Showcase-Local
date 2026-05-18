@@ -1,0 +1,55 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class RedirectToCorrectPanel
+{
+    public function handle(Request $request, Closure $next)
+    {
+        $user = $request->user();
+
+        if (! $user) {
+            return $next($request);
+        }
+
+        $path = $request->path();
+
+        // Skip public auth routes (login, logout, register, password-reset)
+        if (preg_match('#(login|logout|register|password-reset)#', $path)) {
+            // If user is logged in and visits the login page of another panel, log them out
+            if (str_contains($path, 'login')) {
+                if ($user->role === 'admin' && str_starts_with($path, 'painel')) {
+                    Auth::logout();
+                    $request->session()->invalidate();
+                    $request->session()->regenerateToken();
+                    return $next($request);
+                }
+
+                if ($user->role === 'empreendedor' && str_starts_with($path, 'admin')) {
+                    Auth::logout();
+                    $request->session()->invalidate();
+                    $request->session()->regenerateToken();
+                    return $next($request);
+                }
+            }
+
+            return $next($request);
+        }
+
+        // Admin trying to access /painel → redirect to /admin
+        if ($user->role === 'admin' && str_starts_with($path, 'painel')) {
+            return redirect('/admin');
+        }
+
+        // Empreendedor trying to access /admin → redirect to /painel
+        if ($user->role === 'empreendedor' && str_starts_with($path, 'admin')) {
+            return redirect('/painel');
+        }
+
+        return $next($request);
+    }
+}

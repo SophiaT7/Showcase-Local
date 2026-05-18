@@ -8,7 +8,6 @@ const DIAS = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
 
 async function getVitrine(slug: string): Promise<Vitrine | null> {
   try {
-        console.log('URL chamada:', `/vitrines/${slug}`)
     const { data } = await api.get(`/vitrines/${slug}`)
     return data
   } catch (error: any) {
@@ -34,14 +33,14 @@ export default async function VitrinePage({ params }: { params: Promise<{ slug: 
           style={{ backgroundColor: vitrine.cor_primaria ?? '#6366f1' }}
         >
           {vitrine.banner && (
-            <img src={vitrine.banner_url} alt="" className="w-full h-full object-cover" />
+            <img src={vitrine.banner_url!} alt="" className="w-full h-full object-cover" />
           )}
         </div>
         <div className="px-6 pb-6 pt-3">
           <div className="flex gap-4 mb-4">
             <div className="w-20 h-20 rounded-2xl border-4 border-white bg-gray-100 overflow-hidden shadow shrink-0 ">
               {vitrine.foto_perfil ? (
-                <img src={vitrine.foto_perfil_url} alt={vitrine.nome} className="w-full h-full object-cover" />
+                <img src={vitrine.foto_perfil_url ?? undefined} alt={vitrine.nome} className="w-full h-full object-cover" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-3xl font-bold text-gray-400">
                   {vitrine.nome[0]}

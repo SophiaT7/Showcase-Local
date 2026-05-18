@@ -3,8 +3,10 @@ export interface Vitrine {
   slug: string
   nome: string
   descricao: string | null
+  foto_perfil: string | null     // Legore adicionou essa linha
   foto_perfil_url: string | null
-  banner_url: string | null
+  banner: string | null          
+  banner_url: string | null      // Legore adicionou essa linha
   whatsapp: string
   cidade: string
   bairro: string | null
@@ -15,6 +17,7 @@ export interface Vitrine {
   servicos: Servico[]
   galeria: GaleriaFoto[]
   horarios: Horario[]
+  avaliacoes: any[]              // Legore adicionou essa linha
   media_avaliacoes: number
   total_avaliacoes: number
 }
@@ -24,6 +27,7 @@ export interface Categoria {
   nome: string
   slug: string
   icone: string | null
+  vitrines_count?: number
 }
 
 export interface Servico {

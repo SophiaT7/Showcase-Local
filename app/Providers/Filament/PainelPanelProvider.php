@@ -27,6 +27,7 @@ class PainelPanelProvider extends PanelProvider
             ->id('painel')
             ->path('painel')
             ->login()
+            ->passwordReset()
             ->registration(PainelRegistration::class)
             ->brandName('ShowcaseLocal')
             ->colors([
@@ -55,6 +56,7 @@ class PainelPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+                \App\Http\Middleware\RedirectToCorrectPanel::class,
             ]);
     }
 }

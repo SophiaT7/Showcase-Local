@@ -35,11 +35,14 @@ class ServicoResource extends Resource
                 Forms\Components\Textarea::make('descricao')->rows(2),
                 Forms\Components\TextInput::make('preco')
                     ->numeric()
-                    ->prefix('R$'),
+                    ->prefix('R$')
+                    ->nullable()
+                    ->helperText('Deixe em branco para não exibir o preço (ex: preço sob consulta)'),
                 Forms\Components\TextInput::make('preco_label')
-                    ->label('Label do preco')
-                    ->placeholder('Ex: a partir de')
-                    ->maxLength(50),
+                    ->label('Label do preço')
+                    ->placeholder('Ex: a partir de, sob consulta')
+                    ->maxLength(50)
+                    ->helperText('Texto exibido junto ou no lugar do preço'),
                 Forms\Components\Toggle::make('ativo')->default(true),
                 Forms\Components\TextInput::make('ordem')
                     ->numeric()
@@ -53,7 +56,8 @@ class ServicoResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('nome')->searchable(),
                 Tables\Columns\TextColumn::make('preco')
-                    ->money('BRL'),
+                    ->money('BRL')
+                    ->placeholder('Sob consulta'),
                 Tables\Columns\IconColumn::make('ativo')->boolean(),
                 Tables\Columns\TextColumn::make('ordem')->sortable(),
             ])

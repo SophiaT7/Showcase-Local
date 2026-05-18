@@ -14,13 +14,17 @@ export default function Home() {
           <p className="text-gray-500 text-lg mb-8">
             Descubra microempreendedores locais e veja o que eles oferecem
           </p>
-          <BuscaFiltros />
+          
+          {/* ADICIONE O SUSPENSE AQUI TAMBÉM */}
+          <Suspense fallback={<div className="h-10 w-full bg-gray-100 animate-pulse rounded-lg" />}>
+            <BuscaFiltros />
+          </Suspense>
         </div>
       </section>
 
       {/* Lista */}
       <section className="max-w-5xl mx-auto px-4 py-12">
-        <Suspense fallback={<p>Carregando...</p>}>
+        <Suspense fallback={<p>Carregando vitrines...</p>}>
           <ListaVitrines />
         </Suspense>
       </section>
