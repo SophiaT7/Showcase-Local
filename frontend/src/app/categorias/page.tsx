@@ -26,28 +26,46 @@ export default function CategoriasPage() {
       <p className="text-gray-500 mb-8">Explore serviços por categoria</p>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        {sorted.map(cat => (
-          <Link
-            key={cat.id}
-            href={`/?categoria=${cat.slug}`}
-            className="group bg-white border rounded-xl p-5 text-center transition-all flex flex-col items-center gap-2
-              hover:shadow-lg hover:border-indigo-400 hover:bg-indigo-50 hover:scale-105"
-          >
-            {cat.icone && (
-              <LucideIcon
-                name={cat.icone}
-                size={32}
-                className="text-indigo-600 group-hover:text-indigo-700 transition-colors"
-              />
-            )}
-            <p className="font-semibold text-gray-800 group-hover:text-indigo-700 transition-colors">
-              {cat.nome}
-            </p>
-            <span className="text-xs text-gray-400 group-hover:text-indigo-500 transition-colors">
-              {cat.vitrines_count ?? 0} {cat.vitrines_count === 1 ? 'resultado' : 'resultados'}
-            </span>
-          </Link>
-        ))}
+        {sorted.map(cat => {
+          const hasResults = (cat.vitrines_count ?? 0) > 0
+
+          return (
+            <Link
+              key={cat.id}
+              href={`/?categoria=${cat.slug}`}
+              className={`group bg-white border rounded-xl p-5 text-center transition-all flex flex-col items-center gap-2 ${
+                hasResults
+                  ? 'hover:shadow-lg hover:border-indigo-400 hover:bg-indigo-50 hover:scale-105'
+                  : 'opacity-60 grayscale'
+              }`}
+            >
+              {cat.icone && (
+                <LucideIcon
+                  name={cat.icone}
+                  size={32}
+                  className={hasResults
+                    ? 'text-indigo-600 group-hover:text-indigo-700 transition-colors'
+                    : 'text-gray-400'
+                  }
+                />
+              )}
+              <p className={`font-semibold transition-colors ${
+                hasResults
+                  ? 'text-gray-800 group-hover:text-indigo-700'
+                  : 'text-gray-400'
+              }`}>
+                {cat.nome}
+              </p>
+              <span className={`text-xs transition-colors ${
+                hasResults
+                  ? 'text-gray-400 group-hover:text-indigo-500'
+                  : 'text-gray-300'
+              }`}>
+                {cat.vitrines_count ?? 0} {cat.vitrines_count === 1 ? 'resultado' : 'resultados'}
+              </span>
+            </Link>
+          )
+        })}
       </div>
     </div>
   )
