@@ -42,6 +42,7 @@ class VitrineResource extends Resource
                 ->disk('public')
                 ->directory('vitrines/perfil')
                 ->imageEditor()
+                ->helperText('Dimensao recomendada: 400x400 pixels (quadrada).')
                 ->columnSpanFull(),
 
             Forms\Components\FileUpload::make('banner')
@@ -50,6 +51,7 @@ class VitrineResource extends Resource
                 ->disk('public')
                 ->directory('vitrines/banner')
                 ->imageEditor()
+                ->helperText('Dimensao recomendada: 1200x400 pixels (retangular). Imagens muito altas serao cortadas.')
                 ->columnSpanFull(),
 
             Forms\Components\TextInput::make('whatsapp')->required(),

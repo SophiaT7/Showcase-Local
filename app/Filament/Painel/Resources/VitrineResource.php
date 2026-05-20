@@ -46,10 +46,12 @@ class VitrineResource extends Resource
                 Forms\Components\ColorPicker::make('cor_primaria'),
                 Forms\Components\FileUpload::make('foto_perfil')
                     ->image()
-                    ->directory('vitrines/perfil'),
+                    ->directory('vitrines/perfil')
+                    ->helperText('Dimensao recomendada: 400x400 pixels (quadrada).'),
                 Forms\Components\FileUpload::make('banner')
                     ->image()
-                    ->directory('vitrines/banner'),
+                    ->directory('vitrines/banner')
+                    ->helperText('Dimensao recomendada: 1200x400 pixels (retangular). Imagens muito altas serao cortadas.'),
             ]);
     }
 
