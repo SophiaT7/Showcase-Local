@@ -29,7 +29,7 @@ class PainelPanelProvider extends PanelProvider
             ->login()
             ->passwordReset()
             ->registration(PainelRegistration::class)
-            ->brandName('ShowcaseLocal')
+            ->brandName('Vitrine Local')
             ->colors([
                 'primary' => Color::Amber,
             ])

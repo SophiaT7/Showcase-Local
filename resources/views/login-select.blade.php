@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShowcaseLocal - Entrar</title>
+    <title>Vitrine Local - Entrar</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -95,7 +95,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="logo">ShowcaseLocal</div>
+        <div class="logo">Vitrine Local</div>
         <p class="subtitle">Como deseja entrar?</p>
 
         <div class="cards">
