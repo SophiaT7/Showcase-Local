@@ -13,6 +13,9 @@ class EditGaleriaFoto extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
+            Actions\CreateAction::make()
+                ->label('Nova Foto')
+                ->url(GaleriaFotoResource::getUrl('create')),
             Actions\DeleteAction::make(),
         ];
     }
