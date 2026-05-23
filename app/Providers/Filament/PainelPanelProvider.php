@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Painel\Pages\CustomResetPassword;
 use App\Filament\Painel\Pages\PainelRegistration;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -27,7 +28,7 @@ class PainelPanelProvider extends PanelProvider
             ->id('painel')
             ->path('painel')
             ->login()
-            ->passwordReset()
+            ->passwordReset(resetAction: CustomResetPassword::class)
             ->registration(PainelRegistration::class)
             ->brandName('Vitrine Local')
             ->colors([

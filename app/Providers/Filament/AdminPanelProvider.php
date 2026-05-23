@@ -1,6 +1,7 @@
 <?php
 namespace App\Providers\Filament;
 
+use App\Filament\Painel\Pages\CustomResetPassword;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -25,7 +26,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->passwordReset()
+            ->passwordReset(resetAction: CustomResetPassword::class)
             ->colors(['primary' => Color::Violet])
             ->brandName('Vitrine Local - Admin')
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\\Filament\\Admin\\Resources')
