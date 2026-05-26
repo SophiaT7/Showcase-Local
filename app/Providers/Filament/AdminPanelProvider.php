@@ -2,6 +2,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Admin\Pages\AdminLogin;
+use App\Filament\Admin\Pages\EditProfile;
 use App\Filament\Painel\Pages\CustomResetPassword;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -28,6 +29,7 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login(AdminLogin::class)
             ->passwordReset(resetAction: CustomResetPassword::class)
+            ->profile(EditProfile::class)
             ->colors(['primary' => Color::Violet])
             ->brandName('Vitrine Local - Admin')
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\\Filament\\Admin\\Resources')
@@ -36,7 +38,6 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\\Filament\\Admin\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

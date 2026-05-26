@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Painel\Pages\CustomResetPassword;
+use App\Filament\Painel\Pages\EditProfile;
 use App\Filament\Painel\Pages\PainelRegistration;
 use App\Filament\Painel\Pages\UnifiedLogin;
 use Filament\Http\Middleware\Authenticate;
@@ -31,6 +32,7 @@ class PainelPanelProvider extends PanelProvider
             ->login(UnifiedLogin::class)
             ->passwordReset(resetAction: CustomResetPassword::class)
             ->registration(PainelRegistration::class)
+            ->profile(EditProfile::class)
             ->brandName('Vitrine Local')
             ->colors([
                 'primary' => Color::Amber,
@@ -43,7 +45,6 @@ class PainelPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Painel/Widgets'), for: 'App\\Filament\\Painel\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
