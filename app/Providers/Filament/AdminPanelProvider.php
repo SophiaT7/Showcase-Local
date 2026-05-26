@@ -1,6 +1,7 @@
 <?php
 namespace App\Providers\Filament;
 
+use App\Filament\Admin\Pages\AdminLogin;
 use App\Filament\Painel\Pages\CustomResetPassword;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -25,7 +26,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
+            ->login(AdminLogin::class)
             ->passwordReset(resetAction: CustomResetPassword::class)
             ->colors(['primary' => Color::Violet])
             ->brandName('Vitrine Local - Admin')

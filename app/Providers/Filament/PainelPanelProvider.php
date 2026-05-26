@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use App\Filament\Painel\Pages\CustomResetPassword;
 use App\Filament\Painel\Pages\PainelRegistration;
+use App\Filament\Painel\Pages\UnifiedLogin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -27,7 +28,7 @@ class PainelPanelProvider extends PanelProvider
         return $panel
             ->id('painel')
             ->path('painel')
-            ->login()
+            ->login(UnifiedLogin::class)
             ->passwordReset(resetAction: CustomResetPassword::class)
             ->registration(PainelRegistration::class)
             ->brandName('Vitrine Local')
