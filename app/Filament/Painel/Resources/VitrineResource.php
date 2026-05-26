@@ -32,18 +32,19 @@ class VitrineResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('nome')->required()->maxLength(255),
-                Forms\Components\Textarea::make('descricao')->rows(3),
-                Forms\Components\TextInput::make('whatsapp')->maxLength(20),
-                Forms\Components\TextInput::make('cidade')->maxLength(100),
+                Forms\Components\Textarea::make('descricao')->required()->rows(3),
+                Forms\Components\TextInput::make('whatsapp')->required()->maxLength(20),
+                Forms\Components\TextInput::make('cidade')->required()->maxLength(100),
                 Forms\Components\TextInput::make('bairro')->maxLength(100),
-                Forms\Components\TextInput::make('estado')->maxLength(2),
+                Forms\Components\TextInput::make('estado')->required()->maxLength(2),
                 Forms\Components\Select::make('categoria_id')
                     ->relationship('categoria', 'nome')
                     ->required(),
                 Forms\Components\TagsInput::make('tags')
+                    ->required()
                     ->placeholder('Ex: cabelo, barba, corte masculino')
                     ->helperText('Palavras-chave que ajudam clientes a encontrar seu negocio na busca.'),
-                Forms\Components\ColorPicker::make('cor_primaria'),
+                Forms\Components\ColorPicker::make('cor_primaria')->default('#000000'),
                 Forms\Components\FileUpload::make('foto_perfil')
                     ->image()
                     ->directory('vitrines/perfil')
