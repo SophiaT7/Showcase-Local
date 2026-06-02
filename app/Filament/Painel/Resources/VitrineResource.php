@@ -34,6 +34,10 @@ class VitrineResource extends Resource
                 Forms\Components\TextInput::make('nome')->required()->maxLength(255),
                 Forms\Components\Textarea::make('descricao')->required()->rows(3),
                 Forms\Components\TextInput::make('whatsapp')->required()->maxLength(20),
+                Forms\Components\TextInput::make('instagram')
+                    ->maxLength(255)
+                    ->placeholder('@seunegocio')
+                    ->helperText('Seu perfil do Instagram (ex: @seunegocio)'),
                 Forms\Components\TextInput::make('cidade')->required()->maxLength(100),
                 Forms\Components\TextInput::make('bairro')->maxLength(100),
                 Forms\Components\TextInput::make('estado')->required()->maxLength(2),
@@ -43,16 +47,16 @@ class VitrineResource extends Resource
                 Forms\Components\TagsInput::make('tags')
                     ->required()
                     ->placeholder('Ex: cabelo, barba, corte masculino')
-                    ->helperText('Palavras-chave que ajudam clientes a encontrar seu negocio na busca.'),
+                    ->helperText('Palavras-chave que ajudam clientes a encontrar seu negócio na busca.'),
                 Forms\Components\ColorPicker::make('cor_primaria')->default('#000000'),
                 Forms\Components\FileUpload::make('foto_perfil')
                     ->image()
                     ->directory('vitrines/perfil')
-                    ->helperText('Dimensao recomendada: 400x400 pixels (quadrada).'),
+                    ->helperText('Dimensão recomendada: 400x400 pixels (quadrada).'),
                 Forms\Components\FileUpload::make('banner')
                     ->image()
                     ->directory('vitrines/banner')
-                    ->helperText('Dimensao recomendada: 1200x400 pixels (retangular). Imagens muito altas serao cortadas.'),
+                    ->helperText('Dimensão recomendada: 1200x400 pixels (retangular). Imagens muito altas serão cortadas.'),
             ]);
     }
 

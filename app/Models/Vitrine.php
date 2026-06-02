@@ -9,7 +9,7 @@ class Vitrine extends Model
 
     protected $fillable = [
         'user_id', 'categoria_id', 'nome', 'slug', 'descricao',
-        'foto_perfil', 'banner', 'whatsapp', 'cidade', 'bairro',
+        'foto_perfil', 'banner', 'whatsapp', 'instagram', 'cidade', 'bairro',
         'estado', 'cor_primaria', 'tags', 'status',
     ];
 

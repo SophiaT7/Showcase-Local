@@ -19,7 +19,7 @@ class ServicoResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
 
-    protected static ?string $navigationLabel = 'Servicos';
+    protected static ?string $navigationLabel = 'Serviços';
 
     public static function getEloquentQuery(): Builder
     {

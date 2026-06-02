@@ -8,6 +8,7 @@ export interface Vitrine {
   banner: string | null          
   banner_url: string | null      // Legore adicionou essa linha
   whatsapp: string
+  instagram: string | null
   cidade: string
   bairro: string | null
   estado: string

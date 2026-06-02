@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import api from '@/lib/api'
 import { Vitrine } from '@/types'
-import { MapPin, Phone, Star, Clock, Image as ImageIcon } from 'lucide-react'
+import { MapPin, Phone, Star, Clock, Image as ImageIcon, Instagram } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 
 const DIAS = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
@@ -22,6 +22,8 @@ export default async function VitrinePage({ params }: { params: Promise<{ slug: 
   if (!vitrine) notFound()
 
   const whatsappUrl = `https://wa.me/55${vitrine.whatsapp.replace(/\D/g, '')}`
+  const instagramHandle = vitrine.instagram?.replace(/^@/, '').trim()
+  const instagramUrl = instagramHandle ? `https://instagram.com/${instagramHandle}` : null
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
@@ -72,15 +74,28 @@ export default async function VitrinePage({ params }: { params: Promise<{ slug: 
             <p className="text-gray-600 text-sm leading-relaxed mb-4">{vitrine.descricao}</p>
           )}
 
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm"
-          >
-            <Phone className="w-4 h-4" />
-            Falar no WhatsApp
-          </a>
+          <div className="flex gap-3 flex-wrap">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm"
+            >
+              <Phone className="w-4 h-4" />
+              Falar no WhatsApp
+            </a>
+            {instagramUrl && (
+              <a
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 hover:from-purple-600 hover:via-pink-600 hover:to-orange-500 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm"
+              >
+                <Instagram className="w-4 h-4" />
+                Instagram
+              </a>
+            )}
+          </div>
         </div>
       </div>
 

@@ -42,7 +42,7 @@ class VitrineResource extends Resource
                 ->disk('public')
                 ->directory('vitrines/perfil')
                 ->imageEditor()
-                ->helperText('Dimensao recomendada: 400x400 pixels (quadrada).')
+                ->helperText('Dimensão recomendada: 400x400 pixels (quadrada).')
                 ->columnSpanFull(),
 
             Forms\Components\FileUpload::make('banner')
@@ -51,10 +51,11 @@ class VitrineResource extends Resource
                 ->disk('public')
                 ->directory('vitrines/banner')
                 ->imageEditor()
-                ->helperText('Dimensao recomendada: 1200x400 pixels (retangular). Imagens muito altas serao cortadas.')
+                ->helperText('Dimensão recomendada: 1200x400 pixels (retangular). Imagens muito altas serão cortadas.')
                 ->columnSpanFull(),
 
             Forms\Components\TextInput::make('whatsapp')->required(),
+            Forms\Components\TextInput::make('instagram')->maxLength(255),
             Forms\Components\TextInput::make('cidade')->required(),
             Forms\Components\TextInput::make('bairro'),
             Forms\Components\TextInput::make('estado')->maxLength(2)->required(),

@@ -19,7 +19,7 @@ class HorarioResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-clock';
 
-    protected static ?string $navigationLabel = 'Horarios';
+    protected static ?string $navigationLabel = 'Horários';
 
     public static function getEloquentQuery(): Builder
     {
@@ -35,11 +35,11 @@ class HorarioResource extends Resource
                     ->options([
                         0 => 'Domingo',
                         1 => 'Segunda-feira',
-                        2 => 'Terca-feira',
+                        2 => 'Terça-feira',
                         3 => 'Quarta-feira',
                         4 => 'Quinta-feira',
                         5 => 'Sexta-feira',
-                        6 => 'Sabado',
+                        6 => 'Sábado',
                     ])
                     ->required(),
                 Forms\Components\TimePicker::make('abertura'),
@@ -53,7 +53,7 @@ class HorarioResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('dia_semana')
-                    ->formatStateUsing(fn ($state) => ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'][$state] ?? $state)
+                    ->formatStateUsing(fn ($state) => ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'][$state] ?? $state)
                     ->sortable(),
                 Tables\Columns\TextColumn::make('abertura'),
                 Tables\Columns\TextColumn::make('fechamento'),
