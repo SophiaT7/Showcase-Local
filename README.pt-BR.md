@@ -1,6 +1,6 @@
 # ShowcaseLocal
 
-> Uma plataforma para microempreendedores locais criarem uma vitrine digital e divulgarem seus servicos para clientes da regiao.
+> Uma plataforma para microempreendedores locais criarem uma vitrine digital e divulgarem seus serviços para clientes da região.
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
 ![Laravel](https://img.shields.io/badge/Laravel-11-red?style=flat-square&logo=laravel)
@@ -13,48 +13,49 @@
 
 ## Sobre
 
-O ShowcaseLocal conecta microempreendedores com sua comunidade local. Donos de negocios podem criar uma vitrine digital personalizada — com fotos, servicos, precos e horarios de funcionamento — enquanto clientes podem facilmente descobrir e entrar em contato com negocios proximos.
+O ShowcaseLocal conecta microempreendedores com sua comunidade local. Donos de negócios podem criar uma vitrine digital personalizada — com fotos, serviços, preços e horários de funcionamento — enquanto clientes podem facilmente descobrir e entrar em contato com negócios próximos.
 
 ---
 
 ## Funcionalidades
 
-- 🏪 Listagem de negocios com foto de perfil e banner
-- 🔍 Busca por nome do servico e cidade
+- 🏪 Listagem de negócios com foto de perfil e banner
+- 🔍 Busca por nome do serviço e cidade
 - 🗂️ Filtro por categoria
-- 📋 Catalogo de servicos com precos e descricoes
-- 🕐 Horarios de funcionamento por dia da semana
+- 📋 Catálogo de serviços com preços e descrições
+- 🕐 Horários de funcionamento por dia da semana
 - 🖼️ Galeria de fotos
-- ⭐ Avaliacoes e notas de clientes
-- 💬 Botao de contato direto via WhatsApp
-- 🛠️ Painel administrativo para gerenciar negocios, categorias e usuarios
+- ⭐ Avaliações e notas de clientes
+- 💬 Botão de contato direto via WhatsApp
+- 📸 Link para perfil do Instagram
+- 🛠️ Painel administrativo para gerenciar negócios, categorias e usuários
 
 ---
 
 ## Tecnologias
 
 ### Frontend (`/frontend`)
-| Tecnologia | Versao | Finalidade |
+| Tecnologia | Versão | Finalidade |
 |---|---|---|
 | [Next.js](https://nextjs.org/) | 16.1.6 | Framework React com SSR |
 | [React](https://react.dev/) | 19 | Biblioteca de UI |
-| [Tailwind CSS](https://tailwindcss.com/) | 4 | Estilizacao utilitaria |
+| [Tailwind CSS](https://tailwindcss.com/) | 4 | Estilização utilitária |
 | [shadcn/ui](https://ui.shadcn.com/) | 3 | Componentes de UI |
-| [Lucide React](https://lucide.dev/) | 0.575 | Icones |
+| [Lucide React](https://lucide.dev/) | 0.575 | Ícones |
 | [Axios](https://axios-http.com/) | 1.13 | Cliente HTTP |
 | [TanStack Query](https://tanstack.com/query) | 5 | Busca de dados e cache |
 | [Zustand](https://zustand-demo.pmnd.rs/) | 5 | Gerenciamento de estado |
-| [React Hook Form](https://react-hook-form.com/) | 7 | Manipulacao de formularios |
-| [Zod](https://zod.dev/) | 4 | Validacao de schemas |
+| [React Hook Form](https://react-hook-form.com/) | 7 | Manipulação de formulários |
+| [Zod](https://zod.dev/) | 4 | Validação de schemas |
 
 ### Backend (`/`)
-| Tecnologia | Versao | Finalidade |
+| Tecnologia | Versão | Finalidade |
 |---|---|---|
 | [Laravel](https://laravel.com/) | 11 | Framework PHP / API REST |
 | [Filament](https://filamentphp.com/) | 3 | Painel administrativo |
 | [MySQL](https://www.mysql.com/) | 8 | Banco de dados |
 | [Vite](https://vitejs.dev/) | 6 | Bundler de assets |
-| [Tailwind CSS](https://tailwindcss.com/) | 3 | Estilizacao do admin |
+| [Tailwind CSS](https://tailwindcss.com/) | 3 | Estilização do admin |
 
 ---
 
@@ -66,7 +67,7 @@ Showcase-Local/
 │       └── app/
 │           ├── page.tsx            # Home / busca
 │           ├── categorias/         # Listagem de categorias
-│           └── vitrine/[slug]/     # Pagina da vitrine
+│           └── vitrine/[slug]/     # Página da vitrine
 │
 ├── app/                        # Laravel — Models, Controllers, Filament
 │   ├── Models/
@@ -75,15 +76,15 @@ Showcase-Local/
 ├── routes/
 │   └── api.php                 # Rotas da API
 ├── database/
-│   └── migrations/             # Migracoes do banco
+│   └── migrations/             # Migrações do banco
 └── ...                         # Backend Laravel (raiz)
 ```
 
 ---
 
-## Pre-requisitos
+## Pré-requisitos
 
-Antes de comecar, certifique-se de ter instalado na sua maquina:
+Antes de começar, certifique-se de ter instalado na sua máquina:
 
 - [PHP](https://www.php.net/) >= 8.2
 - [Composer](https://getcomposer.org/)
@@ -95,7 +96,7 @@ Antes de comecar, certifique-se de ter instalado na sua maquina:
 
 ## Como Rodar
 
-### 1. Clonar o repositorio
+### 1. Clonar o repositório
 
 ```bash
 git clone https://github.com/SophiaT7/Showcase-Local.git
@@ -105,13 +106,13 @@ cd Showcase-Local
 ### 2. Configurar o Backend (Laravel)
 
 ```bash
-# Instalar dependencias PHP
+# Instalar dependências PHP
 composer install
 
 # Criar arquivo de ambiente
 cp .env.example .env
 
-# Gerar chave da aplicacao
+# Gerar chave da aplicação
 php artisan key:generate
 ```
 
@@ -128,33 +129,33 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-> Certifique-se de que o banco `vitrine_negocio` existe no MySQL antes de rodar as migracoes.
-> Voce pode criar com: `mysql -u root -e "CREATE DATABASE vitrine_negocio;"`
+> Certifique-se de que o banco `vitrine_negocio` existe no MySQL antes de rodar as migrações.
+> Você pode criar com: `mysql -u root -e "CREATE DATABASE vitrine_negocio;"`
 
 ```bash
-# Rodar migracoes
+# Rodar migrações
 php artisan migrate
 
 # (Opcional) Popular o banco com dados de exemplo
 php artisan db:seed
 
-# Criar o link simbolico para arquivos enviados
+# Criar o link simbólico para arquivos enviados
 php artisan storage:link
 ```
 
 #### Iniciar o servidor backend
 
-**Opcao A — Usando `php artisan serve`:**
+**Opção A — Usando `php artisan serve`:**
 
 ```bash
 php artisan serve
 ```
 
-A API estara disponivel em **http://localhost:8000/api**
+A API estará disponível em **http://localhost:8000/api**
 
-**Opcao B — Usando XAMPP:**
+**Opção B — Usando XAMPP:**
 
-Se voce usa [XAMPP](https://www.apachefriends.org/), coloque o projeto dentro de `C:\xampp\htdocs\` e acesse via:
+Se você usa [XAMPP](https://www.apachefriends.org/), coloque o projeto dentro de `C:\xampp\htdocs\` e acesse via:
 
 ```
 http://localhost/Showcase-Local/public
@@ -174,14 +175,14 @@ Abra um **novo terminal** e execute:
 ```bash
 cd frontend
 
-# Instalar dependencias
+# Instalar dependências
 npm install
 
 # Criar arquivo de ambiente
 cp .env.example .env.local
 ```
 
-O `.env.local` padrao ja aponta para o backend local:
+O `.env.local` padrão já aponta para o backend local:
 
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:8000/api
@@ -193,15 +194,15 @@ NEXT_PUBLIC_API_URL=http://localhost:8000/api
 npm run dev
 ```
 
-O frontend estara disponivel em **http://localhost:3000**
+O frontend estará disponível em **http://localhost:3000**
 
 ---
 
 ## Executando o Projeto
 
-Voce precisa de **dois terminais** rodando simultaneamente:
+Você precisa de **dois terminais** rodando simultaneamente:
 
-| Terminal | Diretorio | Comando | URL |
+| Terminal | Diretório | Comando | URL |
 |---|---|---|---|
 | 1 - Backend | `Showcase-Local/` | `php artisan serve` ou XAMPP | http://localhost:8000 ou http://localhost/Showcase-Local/public |
 | 2 - Frontend | `Showcase-Local/frontend/` | `npm run dev` | http://localhost:3000 |
@@ -210,47 +211,41 @@ Voce precisa de **dois terminais** rodando simultaneamente:
 
 ## Painel Administrativo
 
-O painel admin e feito com [Filament](https://filamentphp.com/) e esta disponivel em:
+O painel admin é feito com [Filament](https://filamentphp.com/) e está disponível em:
 
 **http://localhost:8000/admin**
 
-Credenciais padrao do admin (apos rodar o seed):
+Após rodar o seed, uma conta admin padrão é criada:
 
 | Email | Senha | Papel |
 |---|---|---|
 | `admin@vitrine.com` | `password` | Admin |
 
-Contas de empreendedores de exemplo:
-
-| Email | Senha |
-|---|---|
-| `maria@teste.com` | `password` |
-| `joao@teste.com` | `password` |
-| `ana@teste.com` | `password` |
+> **Nota:** Altere a senha padrão após o primeiro login.
 
 ---
 
-## Variaveis de Ambiente
+## Variáveis de Ambiente
 
 ### Backend `.env`
 
-| Variavel | Descricao | Padrao |
+| Variável | Descrição | Padrão |
 |---|---|---|
 | `DB_CONNECTION` | Driver do banco | `mysql` |
 | `DB_HOST` | Host do banco | `127.0.0.1` |
 | `DB_PORT` | Porta do banco | `3306` |
 | `DB_DATABASE` | Nome do banco | `vitrine_negocio` |
-| `DB_USERNAME` | Usuario do banco | `root` |
+| `DB_USERNAME` | Usuário do banco | `root` |
 | `DB_PASSWORD` | Senha do banco | _(vazio)_ |
 
 ### Frontend `frontend/.env.local`
 
-| Variavel | Descricao | Padrao |
+| Variável | Descrição | Padrão |
 |---|---|---|
 | `NEXT_PUBLIC_API_URL` | URL base da API backend | `http://localhost:8000/api` |
 
 ---
 
-## Licenca
+## Licença
 
 MIT

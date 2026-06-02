@@ -27,6 +27,7 @@ ShowcaseLocal connects micro-entrepreneurs with their local community. Business 
 - 🖼️ Photo gallery
 - ⭐ Customer reviews and ratings
 - 💬 Direct WhatsApp contact button
+- 📸 Instagram profile link
 - 🛠️ Admin panel for managing businesses, categories and users
 
 ---
@@ -214,19 +215,13 @@ The admin panel is powered by [Filament](https://filamentphp.com/) and is availa
 
 **http://localhost:8000/admin**
 
-Default admin credentials (after seeding):
+After seeding, a default admin account is created:
 
 | Email | Password | Role |
 |---|---|---|
 | `admin@vitrine.com` | `password` | Admin |
 
-Sample entrepreneur accounts:
-
-| Email | Password |
-|---|---|
-| `maria@teste.com` | `password` |
-| `joao@teste.com` | `password` |
-| `ana@teste.com` | `password` |
+> **Note:** Change the default password after first login.
 
 ---
 
