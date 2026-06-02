@@ -22,7 +22,7 @@
         }
 
         .logo {
-            font-size: 2rem;
+            font-size: 2.8rem;
             font-weight: 800;
             color: #1e293b;
             margin-bottom: 0.5rem;
@@ -95,7 +95,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="logo"><img src="/logoVitrine.png" alt="Vitrine Local" style="height: 60px; margin: 0 auto 0.5rem;"> Vitrine Local</div>
+        <div class="logo"><img src="/logoVitrine.png" alt="Vitrine Local" style="height: 90px; vertical-align: middle;"> Vitrine <span style="color: var(--color-indigo-600, #4f46e5);">Local</span></div>
         <p class="subtitle">Como deseja entrar?</p>
 
         <div class="cards">
