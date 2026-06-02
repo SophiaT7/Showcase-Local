@@ -34,6 +34,8 @@ class PainelPanelProvider extends PanelProvider
             ->registration(PainelRegistration::class)
             ->profile(EditProfile::class)
             ->brandName('Vitrine Local')
+            ->brandLogo(asset('logoVitrine.png'))
+            ->brandLogoHeight('3rem')
             ->colors([
                 'primary' => Color::Amber,
             ])

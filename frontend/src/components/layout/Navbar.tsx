@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Search, MapPin, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 
@@ -11,9 +12,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 font-bold text-xl text-gray-900">
-          <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center">
-            <MapPin className="w-4 h-4 text-white" />
-          </div>
+          <Image src="/logoVitrine.png" alt="Vitrine Local" width={36} height={36} />
           <span>Vitrine<span className="text-indigo-600">Local</span></span>
         </Link>
 

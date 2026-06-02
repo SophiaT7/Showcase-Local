@@ -95,7 +95,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="logo">Vitrine Local</div>
+        <div class="logo"><img src="/logoVitrine.png" alt="Vitrine Local" style="height: 60px; margin: 0 auto 0.5rem;"> Vitrine Local</div>
         <p class="subtitle">Como deseja entrar?</p>
 
         <div class="cards">
