@@ -12,6 +12,10 @@ const geist = Geist({
 export const metadata: Metadata = {
   title: "VitrineLocal — Encontre serviços perto de você",
   description: "Descubra microempreendedores locais e veja o que eles oferecem",
+  icons: {
+    icon: "/logoVitrine.png",
+    apple: "/logoVitrine.png",
+  },
 };
 
 export default function RootLayout({

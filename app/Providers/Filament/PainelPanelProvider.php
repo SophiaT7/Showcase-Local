@@ -36,6 +36,7 @@ class PainelPanelProvider extends PanelProvider
             ->brandName('Vitrine Local')
             ->brandLogo(asset('logoVitrine.png'))
             ->brandLogoHeight('3rem')
+            ->favicon(asset('logoVitrine.png'))
             ->colors([
                 'primary' => Color::Amber,
             ])
